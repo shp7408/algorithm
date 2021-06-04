@@ -5,25 +5,39 @@ def solution(a, b, board):
     #print(p2)
     #print(board)
 
+    answer = []
+
+    for i in range(8) :
+
+        # 배열의 i 인덱스에 있는 값을 가져와서, int형 으로 변경
+        a[i] = int(a[i])
+        b[i] = int(b[i])
+
+        # 출력
+        #print("a", a[i])
+        #print("b", b[i])
+
+        #print(bin(a[i]))
+        #print(bin(b[i]))
+
+        # i 인덱스에 있는 값을 or 연산 -> 두 지도를 합친다고 했으므로,
+        c  = a[i] | b[i]
+        print(c)
+
+        # 연산 결과 c를 2진수로 변경
+        c = bin(c)[2:10]
+        print(c, "2진수로 변경 후")
+
+        # 결과값에서 1 -> *, 0 -> 공백 으로 변경
+        c_mod = c.replace("1","*")
+        c_mod = c_mod.replace("0", " ")
+        print(c_mod)
+
+        # answer 배열에 값 넣기
+        answer.append(c_mod)
 
 
-
-    # 오름차순으로 정렬해서 연산 해보기
-    a.sort()
-    a.reverse()
-    b.sort()
-    #[39, 135, 145, 159, 161, 164, 182, 224]
-    #[1, 3, 25, 129, 160, 165, 228, 241]
-
-    print(a)
-    print(b)
-
-    c  = bin(int(a[0]))
-    d = bin(int(b[0]))
-
-
-    for x in a:
-        print(bin(int(a[0])))
+    print("정답 : ",answer)
 
 
 
