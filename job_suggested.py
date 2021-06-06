@@ -22,16 +22,16 @@ def solution(a, b, board):
 
         # i 인덱스에 있는 값을 or 연산 -> 두 지도를 합친다고 했으므로,
         c  = a[i] | b[i]
-        print(c)
+        #print(c)
 
         # 연산 결과 c를 2진수로 변경
         c = bin(c)[2:10]
-        print(c, "2진수로 변경 후")
+        #print(c, "2진수로 변경 후")
 
         # 결과값에서 1 -> *, 0 -> 공백 으로 변경
         c_mod = c.replace("1","*")
         c_mod = c_mod.replace("0", " ")
-        print(c_mod)
+        #print(c_mod)
 
         # answer 배열에 값 넣기
         answer.append(c_mod)
