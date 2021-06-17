@@ -13,28 +13,55 @@
 # 4. 0 ~ 9 까지 숫자가 모두 있으면, 멈춘다.
 # 5. 그 때의 N을 출력한다.
 
-
-t = int(input())
-
 numList = []
-
+# numList 생성
 for numInt in range(10):
     numList.append(str(numInt))
-
 # print(numList)
 # ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
+
+
+
+t = int(input())
+
+# int, string 문자 전역 변수로 선언
+iNumInt = None
+iNumStr = ""
+
 for i in range(1, t + 1):
+    # 현재 입력받은 숫자 리스트
+    nowStr = []
+
     # 입력받는 숫자
     iNumInt = int(input())
     iNumStr = str(iNumInt)
-    for j in iNumStr:
-        for k in numList:
-            if k == j:
-                print("k == j")
-            else:
-                print("else")
-                break
-        print(" === ")
+
+    k = 1
+
+    while nowStr != numList:
+        print("========")
+
+        if nowStr == numList:
+            print("#" + str(i), iNumInt)
+            break
+
+        iNumInt = iNumInt * k
+        iNumStr = str(iNumInt)
+        print(i, k ,iNumStr)
+
+        nowStr.extend(iNumStr)
+        print(i, k ,nowStr)
+
+        # nowStr 중복 제거
+        nowStr = set(nowStr)
+        nowStr = list(nowStr)
+        # 오름차순 정렬
+        nowStr = sorted(nowStr)
+        print(i, k ,nowStr)
+
+        k = k + 1
+        print("k에 +1 ", k)
+
 
 
