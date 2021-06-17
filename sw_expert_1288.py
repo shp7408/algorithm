@@ -12,3 +12,29 @@
 # 3. 1-2.를 반복한다.
 # 4. 0 ~ 9 까지 숫자가 모두 있으면, 멈춘다.
 # 5. 그 때의 N을 출력한다.
+
+
+t = int(input())
+
+numList = []
+
+for numInt in range(10):
+    numList.append(str(numInt))
+
+# print(numList)
+# ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+for i in range(1, t + 1):
+    # 입력받는 숫자
+    iNumInt = int(input())
+    iNumStr = str(iNumInt)
+    for j in iNumStr:
+        for k in numList:
+            if k == j:
+                print("k == j")
+            else:
+                print("else")
+                break
+        print(" === ")
+
+
