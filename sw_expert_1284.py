@@ -14,6 +14,8 @@ for i in range(1, test + 1):
     test = int(input())
 
     for i in range(1, test + 1):
+
+        # map 에 int 와 리스트를 넣으면, 리스트의 모든 요소를 int를 사용하여, 변환
         p, q, r, s, w = map(int, input().split())
 
         A = p * w
