@@ -6,20 +6,19 @@ for i in range(1, test + 1):
     list = input().split()
     print(list)
 
-    p = int(list[0])
-    q = int(list[1])
-    r = int(list[2])
-    s = int(list[3])
-    w = int(list[4])
+    #    p = int(list[0])
+    #    q = int(list[1])
+    #    r = int(list[2])
+    #    s = int(list[3])
+    #    w = int(list[4])
+    test = int(input())
 
-    if p * w <= q:
-        print("#" + str(i), p * w)
+    for i in range(1, test + 1):
+        p, q, r, s, w = map(int, input().split())
 
-    elif w < r and q < p * w:
-        print("#" + str(i), q)
+        A = p * w
+        B = (s * (w - r) + q) if w >= r else q
 
-    elif w >= r and (s * w) + q < p * w:
-        print("#" + str(i), (s * w) + q)
-
-    else:
-        print("#" + str(i), p * w, q, w, r, q, p * w, (s * w) + q)
+        print('#', end='')
+        print(i, end=' ')
+        print(min(A, B))
