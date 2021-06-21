@@ -30,14 +30,37 @@ for i in range(1, t):
     C, D = which_Big_List(A, B)
 
     while len(C) != len(D):
-        D.append(0)
+        D.insert(0, 0)
 
+    #print("C " , C)
+    #print("D ", D)
 
-    # C, D 리스트의 인덱스가 같은 것 끼리 곱하기 연산
-    E = [x*y for x,y in zip(A,B)]
+    sumIntEList = 0
+    sumEList=[] # sumIntEList 의 리스트
 
-    # 리스트의 각 값을 모두 더한다.
-    sumEList = sum(E)
+    for j in range (10) :
+        # C, D 리스트의 인덱스가 같은 것 끼리 곱하기 연산
+        E = [x * y for x, y in zip(A, B)]
+
+        #print("E ", E)
+
+        # 리스트의 각 값을 모두 더한다.
+        sumIntEList = sum(E)
+        sumEList.append(sumIntEList)
+
+        #print("sumIntEList ", sumIntEList)
+        #print("sumEList ", sumEList)
+
+        # D 리스트에서 마지막 인덱스의 0을 첫 인덱스 자리로 옮기기
+        D.insert(0, D.pop())
+
+        #print("D :" , D)
+
+    print("D :", D)
+
+    #sumEList 의 최대값 구하기
+    print("#"+ str(i), max(sumEList))
+
 
 
 
