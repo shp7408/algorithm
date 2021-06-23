@@ -10,7 +10,7 @@ for case in range(1, T + 1):
     second = a[0:2]
     howLong = 0
     for j in range(1, 10):
-        howLong = howLong +1
+        howLong = howLong + 1
         if first == a[j] :
             if second == a[j:j+2] :
                 break
