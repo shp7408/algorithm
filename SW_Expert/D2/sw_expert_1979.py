@@ -14,7 +14,8 @@
 # 4. 문자열의 맨 앞, 맨 마지막을 0으로 감싼다.
 # 5. 리스트화 된 문자열의 0 마지막 인덱스를 0*N 으로 감싼다.
 # 6. 01110 체크
-# 7.
+# 7. N개의 원소들의 인덱스 별로 체크
+# 체크 방식!! 체크 횟수는 전체 N - K +1
 
 T = int(input())
 
@@ -32,10 +33,17 @@ for case in range(1, T + 1):
     aList.append(firstLast)
     aList.insert(0, firstLast)
 
-    bList =[]
+    bList = []
     for i in aList:
         i2 = "0" + i + "0"
-        bList.append(i2)
+        bList.append(i2) #0000000
+
+    num = 0
+
+    times = N - K + 1
+    for i in (0, times):
+        print(i)
+
 
 
 
