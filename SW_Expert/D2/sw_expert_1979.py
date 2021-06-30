@@ -44,7 +44,7 @@ for case in range(1, T + 1):
     for i in (0, times):
         print(i)
 
-
+    # 문자열을 잘라서, 둘이 같은지를 확인하기
 
 
 
