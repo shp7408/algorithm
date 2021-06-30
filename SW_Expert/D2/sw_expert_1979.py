@@ -41,8 +41,8 @@ for case in range(1, T + 1):
     num = 0
 
     times = N - K + 1
-    for i in (0, times):
-        print(i)
+    for j in (3):
+        print(j)
 
     # 문자열을 잘라서, 둘이 같은지를 확인하기
 
