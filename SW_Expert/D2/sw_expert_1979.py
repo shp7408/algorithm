@@ -39,16 +39,31 @@ for case in range(1, T + 1):
         bList.append(i2) #0000000
 
     num = 0
-
+    indexFNum = 0
     times = N - K + 1
-    for j in (3):
-        print(j)
+
+    oneStr = "1"
+    oneStr = oneStr * K
+
+    for i in range(times+1):
+        for j in range(times+1):
+            if bList[i][j:j+times] == oneStr:
+                num = num + 1
 
     # 문자열을 잘라서, 둘이 같은지를 확인하기
 
+    colStr = "" #oneStr 과 세로로 비교할 문자열
 
+    for i in range(times+1):
+        for j in range(times+1):
 
+            colStr = colStr + bList[i][j]
 
+            if colStr == oneStr:
+                num = num + 1
+                print("DDDD")
+
+    print(f'#{case} {num}')
 
 
 
