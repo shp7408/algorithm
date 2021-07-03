@@ -29,33 +29,34 @@ for case in range(1, T + 1):
         a1 = a.replace(" ", "")
         aList.append(a1)
 
-    firstLast = '0'*N #00000
+    firstLast = '0' * N  # 00000
     aList.append(firstLast)
     aList.insert(0, firstLast)
 
     bList = []
     for i in aList:
         i2 = "0" + i + "0"
-        bList.append(i2) #0000000
+        bList.append(i2)  # 0000000
 
     num = 0
     indexFNum = 0
     times = N - K + 1
 
     oneStr = "1"
-    oneStr = oneStr * K
+    oneStr = "0" + oneStr * K + "0"
 
-    for i in range(times+1):
-        for j in range(times+1):
-            if bList[i][j:j+times] == oneStr:
+    for i in range(times + 1):
+        for j in range(times + 1):
+            if bList[i][j:j + times] == oneStr:
+                print(f'#{case} {bList[i][j:j + times]}')
                 num = num + 1
 
     # 문자열을 잘라서, 둘이 같은지를 확인하기
 
-    colStr = "" #oneStr 과 세로로 비교할 문자열
+    colStr = ""  # oneStr 과 세로로 비교할 문자열
 
-    for i in range(times+1):
-        for j in range(times+1):
+    for i in range(times + 1):
+        for j in range(times + 1):
 
             colStr = colStr + bList[i][j]
 
@@ -64,7 +65,3 @@ for case in range(1, T + 1):
                 print("DDDD")
 
     print(f'#{case} {num}')
-
-
-
-
