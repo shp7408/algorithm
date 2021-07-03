@@ -67,7 +67,7 @@ for case in range(1, T + 1):
     print(f'#{case} {num}')
 
 
-def check(li,n,s,e,k):
+def check(li, n, s, e, k):
     global cnt
     if li[s][e:e+k] == [1]*k:
         if e+k == n and e != 0 and li[s][e-1] == 0:
@@ -80,12 +80,12 @@ def check(li,n,s,e,k):
     return
 
 for tc in range(int(input())):
-        N,K = map(int, input().split())
+        N, K = map(int, input().split())
         puzzle = [list(map(int, input().split())) for _ in range(N)]
         puzzle_rev = [[puzzle[m][n] for m in range(N)] for n in range(N)]
         cnt = 0
 for i in range(N):
     for j in range(N):
-        check(puzzle,N,i,j,K)
+        check(puzzle, N, i, j, K)
         check(puzzle_rev, N, i, j, K)
-    print("#{} {}".format(tc+1,cnt))
+    print("#{} {}".format(tc+1, cnt))
