@@ -1,3 +1,63 @@
+```
+// 1, 2, 3, 4 를 이용하여 세 자리 자연수를 만드는 방법 (순서 X, 중복 X)의 각 결과를 출력
+public class Main {
+    int solution(int[] d, int budget){
+        int answer = 0;
+
+        boolean[] visited = new boolean[d.length];
+
+//        for (int i = d.length; i == 0; i--) { // r 큰수부터 정하기
+//
+//        }
+
+
+        combination(d, visited, 0, d.length, d.length-1);
+
+        return answer;
+    }
+
+    void combination(int[] arr, boolean[] visited, int depth, int n, int r) {
+
+        int[] resultArr = new int[visited.length];
+
+        if (r == 0) {
+            for (int i = 0; i < n; i++) {
+                if (visited[i]) {
+                    System.out.print(arr[i] + " ");
+//                    resultArr[i] = arr[i];
+                }
+            }
+            System.out.println();
+            return;
+        }
+
+        if (depth == n) {
+            return;
+        }
+        visited[depth] = true;
+        combination(arr, visited, depth + 1, n, r-1 );
+
+        visited[depth] = false;
+        combination(arr, visited, depth + 1, n, r);
+
+    }
+
+    public static void main(String[] args) {
+//        Test code
+        int[] arr = {1, 3, 2, 5, 4};
+
+        Main p = new Main();
+        int r = p.solution(arr, 9);
+        System.out.println("result 1 :" + r);
+
+        int[] arr2 = {2, 2, 3, 3};
+        r = p.solution(arr2, 4);
+        System.out.println("result 1 :" + r);
+    }
+}
+
+```
+
 ### 20220818 1차 1번
 ```
 class Solution {
