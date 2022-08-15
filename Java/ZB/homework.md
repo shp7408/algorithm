@@ -4,6 +4,130 @@
 
 ### 20220815_07
 ```
+import java.util.*;
+
+class Lotto {
+    public int one;
+    public int two;
+    public int three;
+
+    public int four;
+    public int five;
+    public int six;
+
+    public int numOfSameNum;
+
+    public Lotto() {
+    }
+
+    public Lotto(int one, int two, int three, int four,int five, int six) {
+        this.one = one;
+        this.two = two;
+        this.three = three;
+        this.four = four;
+        this.five = five;
+        this.six = six;
+    }
+
+    public Lotto(int one, int two, int three,int four, int five, int six, int numOfSameNum) {
+        this.one = one;
+        this.two = two;
+        this.three = three;
+        this.four = four;
+        this.five = five;
+        this.six = six;
+        this.numOfSameNum = numOfSameNum;
+    }
+
+    // 정렬
+    public Lotto sortLottoNumber() {
+
+        int[] ints = new int[]{this.one, this.two, this.three, this.four, this.five, this.six};
+        Arrays.sort(ints);
+        Lotto printLotto = new Lotto(ints[0], ints[1], ints[2], ints[3], ints[4], ints[5]);
+
+        return printLotto;
+    }
+
+    public int getLottoRandomNumber() {
+        Random rd = new Random();
+        int tmp = rd.nextInt(45) + 1; // (0 ~ 45) + 1 범위 내
+        return tmp;
+    }
+
+    public void setAllRandomNumber() {
+        this.one = this.getLottoRandomNumber();
+        this.two = this.getLottoRandomNumber();
+        this.three = this.getLottoRandomNumber();;
+        this.four = this.getLottoRandomNumber();
+        this.five = this.getLottoRandomNumber();
+        this.six = this.getLottoRandomNumber();
+    }
+    
+    public void compareToNumbers(Lotto resultLotto) {
+        int[] ints = new int[]{this.one, this.two, this.three, this.four, this.five, this.six};
+        int[] resultInts = new int[]{resultLotto.one, resultLotto.two, resultLotto.three, resultLotto.four, resultLotto.five, resultLotto.six};
+
+        int returnSameNum = 0;
+
+        for (int i = 0; i < ints.length; i++) {
+            for (int j = 0; j < resultInts.length; j++) {
+                if (ints[i] == resultInts[j]) {
+                    returnSameNum++;
+                }
+            }
+        }
+        this.numOfSameNum = returnSameNum;
+    }
+}
+
+public class JavaAssignment7 {
+    public static void main(String[] args) {
+        System.out.println("[로또 당첨 프로그램]\n");
+
+        int inputTimes;
+
+        ArrayList<Lotto> lottoArrayList = new ArrayList<>();
+
+        Lotto resultLotto = new Lotto();
+        resultLotto.setAllRandomNumber();
+        resultLotto = resultLotto.sortLottoNumber();
+
+        do {
+            try {
+                System.out.print("로또 개수를 입력해 주세요.(숫자 1 ~ 10):");
+                inputTimes = new Scanner(System.in).nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("유효하지 않은 값입니다. 다시 값을 입력해주세요.");
+            }
+        } while (true);
+
+        char[] chars = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+
+        for (int i = 0; i < inputTimes; i++) {
+            Lotto lotto = new Lotto();
+            lotto.setAllRandomNumber();
+            lotto = lotto.sortLottoNumber();
+
+            lotto.compareToNumbers(resultLotto);
+            lottoArrayList.add(lotto);
+
+            System.out.printf("%c\t %02d, %02d, %02d, %02d, %02d, %02d\n", chars[i], lotto.one, lotto.two, lotto.three, lotto.four, lotto.five, lotto.six);
+        }
+
+        System.out.println("\n[로또 발표]");
+        System.out.printf("\t %02d, %02d, %02d, %02d, %02d, %02d ", resultLotto.one, resultLotto.two, resultLotto.three, resultLotto.four, resultLotto.five, resultLotto.six);
+
+
+        System.out.println("\n[내 로또 결과]");
+        for (int i = 0; i < inputTimes; i++) {
+            Lotto lotto = lottoArrayList.get(i);
+            System.out.printf("%c\t %02d, %02d, %02d, %02d, %02d, %02d => %d 개 일치\n", chars[i], lotto.one, lotto.two, lotto.three, lotto.four, lotto.five, lotto.six, lotto.numOfSameNum);
+        }
+
+    }
+}
 ```
 
 ### 20220815_06
@@ -51,7 +175,7 @@ enum CandidateEnum {
 }
 
 
-public class Main {
+public class JavaAssignment6 {
     public static void main(String[] args) {
         int allVotes = 10000;
         double nowProgressPercent;
