@@ -8,6 +8,106 @@
 
 ### 20220815_06
 ```
+import java.util.*;
+
+enum CandidateEnum {
+    LJM(1, "이재명"),
+    YSY(2, "윤석열"),
+    SSJ(3, "심상정"),
+    ACS(4, "안철수");
+    private final int candidateNum;
+    private final String candidateName;
+
+    private int voteCounts;
+
+    CandidateEnum(int candidateNum, String candidateName ) {
+        this.candidateNum = candidateNum;
+        this.candidateName = candidateName;
+    }
+
+    public int getCandidateNum() {
+        return this.candidateNum;
+    }
+
+    public String getCandidateName() {
+        return this.candidateName;
+    }
+
+    public static CandidateEnum valueOfNumber(int candidateNum) {
+        return Arrays.stream(values())
+                .filter(value -> Objects.equals(value.candidateNum, candidateNum))
+                .findFirst()
+                .orElseThrow(()-> new IllegalArgumentException(String.format("%d는 유효한 번호가 아닙니다.",  candidateNum)));
+    }
+
+    public void plusVoteCount(){
+        this.voteCounts++;
+    }
+
+    public int getVoteCounts() {
+        return this.voteCounts;
+    }
+
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        int allVotes = 10000;
+        double nowProgressPercent;
+        int rdInt;
+
+        for (int i = 1; i < allVotes + 1; i++) {
+            Random rd = new Random();//랜덤 객체 생성
+            rdInt = rd.nextInt(4);
+            int candiRdInt = rdInt + 1;
+            System.out.println(rdInt);
+
+            CandidateEnum candidate = CandidateEnum.valueOfNumber(candiRdInt);
+            candidate.plusVoteCount();
+
+            nowProgressPercent = (double) i / allVotes * 100;
+            System.out.printf("[투표진행율]: %.2f%%, %d명 투표 => %s\n", nowProgressPercent, i, candidate.getCandidateName());
+
+            System.out.printf("[기호:%d] %s: %.2f%%, (투표수: %d)\n",
+                    CandidateEnum.LJM.getCandidateNum(),
+                    CandidateEnum.LJM.getCandidateName(),
+                    (double) CandidateEnum.LJM.getVoteCounts() / i * 100,
+                    CandidateEnum.LJM.getVoteCounts()
+            );
+            System.out.printf("[기호:%d] %s: %.2f%%, (투표수: %d)\n",
+                    CandidateEnum.YSY.getCandidateNum(),
+                    CandidateEnum.YSY.getCandidateName(),
+                    (double) CandidateEnum.YSY.getVoteCounts() / i* 100,
+                    CandidateEnum.YSY.getVoteCounts()
+            );
+            System.out.printf("[기호:%d] %s: %.2f%%, (투표수: %d)\n",
+                    CandidateEnum.SSJ.getCandidateNum(),
+                    CandidateEnum.SSJ.getCandidateName(),
+                    (double) CandidateEnum.SSJ.getVoteCounts() / i* 100,
+                    CandidateEnum.SSJ.getVoteCounts()
+            );
+            System.out.printf("[기호:%d] %s: %.2f%%, (투표수: %d)\n",
+                    CandidateEnum.ACS.getCandidateNum(),
+                    CandidateEnum.ACS.getCandidateName(),
+                    (double) CandidateEnum.ACS.getVoteCounts() / i* 100,
+                    CandidateEnum.ACS.getVoteCounts()
+            );
+        }
+
+        CandidateEnum[] allCandidates = CandidateEnum.values();
+        Arrays.sort(allCandidates, Comparator.comparing(CandidateEnum::getVoteCounts));
+
+        CandidateEnum result = null; // 당선인
+        for (CandidateEnum candidateEnum: allCandidates) {
+            result = candidateEnum;
+        }
+
+        System.out.printf("[투표결과] 당선인 : %s", result.getCandidateName());
+    }
+}
+
+
 ```
 
 ### 20220815_05
