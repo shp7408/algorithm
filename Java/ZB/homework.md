@@ -63,7 +63,32 @@ class Lotto {
         this.five = this.getLottoRandomNumber();
         this.six = this.getLottoRandomNumber();
     }
-    
+
+    private boolean checkDuplicateNumber(int n[], int index) {
+        for (int i = 0; i < n.length; i++) {
+            if(n[i] == index)
+                return true;
+        }
+        return false;
+    }
+
+    public void checkDuplicateNumber() {
+        int[] ints = new int[]{this.one, this.two, this.three, this.four, this.five, this.six};
+        int index;
+        for (int i = 0; i < ints.length; i++) {
+            do {
+                index = this.getLottoRandomNumber();
+            } while (checkDuplicateNumber(ints, index));
+            ints[i] = index;
+        }
+        this.one = ints[0];
+        this.two = ints[1];
+        this.three = ints[2];;
+        this.four = ints[3];
+        this.five = ints[4];
+        this.six = ints[5];
+    }
+
     public void compareToNumbers(Lotto resultLotto) {
         int[] ints = new int[]{this.one, this.two, this.three, this.four, this.five, this.six};
         int[] resultInts = new int[]{resultLotto.one, resultLotto.two, resultLotto.three, resultLotto.four, resultLotto.five, resultLotto.six};
@@ -91,6 +116,7 @@ public class JavaAssignment7 {
 
         Lotto resultLotto = new Lotto();
         resultLotto.setAllRandomNumber();
+        resultLotto.checkDuplicateNumber();
         resultLotto = resultLotto.sortLottoNumber();
 
         do {
@@ -108,6 +134,7 @@ public class JavaAssignment7 {
         for (int i = 0; i < inputTimes; i++) {
             Lotto lotto = new Lotto();
             lotto.setAllRandomNumber();
+            lotto.checkDuplicateNumber();
             lotto = lotto.sortLottoNumber();
 
             lotto.compareToNumbers(resultLotto);
