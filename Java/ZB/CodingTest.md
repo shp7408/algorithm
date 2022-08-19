@@ -1,3 +1,4 @@
+### 20220818 1차 1번
 ```
 class Solution {
     public int sol(int n) {
