@@ -51,3 +51,56 @@ public class Main {
 
 
 ```
+
+```
+class Solution {
+    public String sol(int[] numbers) {
+        String answer = "";
+
+//        1. int to String
+        for (int i = 0; i < numbers.length; i++) {
+
+        }
+
+//        2. 원소들끼리 문자열 결합 -> 원소가 n개인 경우, 경우의 수? = 
+
+        return  answer;
+    }
+
+
+    Solution() {}
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+//        test code
+        Solution solution = new Solution();
+        System.out.println("============= 1 번");
+
+        int[] array1 = new int[]{6, 10, 2};
+        String return1 = "6210";
+
+        String answer = solution.sol(array1);
+        if (answer.equals(return1)) {
+            System.out.println("passsssss!!!! : " + answer);
+        } else {
+            System.out.println("false!" + answer);
+        }
+
+        System.out.println("============= 2 번");
+
+        array1 = new int[]{3, 30, 34, 5, 9};
+        return1 = "9534330";
+
+        answer = solution.sol(array1);
+        if (answer.equals(return1)) {
+            System.out.println("passsssss!!!! : " + answer);
+        } else {
+            System.out.println("false!" + answer);
+        }
+
+
+    }
+}
+```
