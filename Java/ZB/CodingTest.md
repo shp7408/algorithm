@@ -104,3 +104,92 @@ public class Main {
     }
 }
 ```
+<br>
+
+### 2차 1번
+```
+```
+<br>
+
+### 2차 2번
+```
+```
+<br>
+
+### 2차 3번
+```
+import java.util.ArrayList;
+
+class Solution {
+    public String sol(String code) {
+        String answer = code;
+
+        char[] codeChars = code.toCharArray();
+        ArrayList<Character> list = new ArrayList<>();
+        for (char c : codeChars) {
+            list.add(c);
+        }
+
+        int lastOpenIndex = list.lastIndexOf('{'); // 문자열에서 가장 마지막에 나오는 { 의 인덱스
+        int firstCloseIndex = answer.length()  - list.indexOf('}'); // 문자열에서 가장 처음 나오는 { 의 인덱스
+
+        ArrayList<Character> replaceArr = new ArrayList<>();
+        char numChar = list.get(lastOpenIndex - 1); // 반복하려는 숫자의 char형
+        int numInt = Character.getNumericValue(numChar); // 반복 수
+
+        for (int i = 0; i < firstCloseIndex - lastOpenIndex - 1; i++) {
+            replaceArr.add(list.get(lastOpenIndex + 1));
+            list.remove(lastOpenIndex);
+        }
+        list.remove(lastOpenIndex-1);
+
+        for (int i = 0; i < numInt; i++) {
+            for (int j = 0; j < replaceArr.size(); j++) {
+
+                replaceArr.add(replaceArr.get(j));
+            }
+            list.add(firstCloseIndex + i, replaceArr.get(i));
+        }
+
+
+        return answer;
+    }
+    Solution() {}
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+//        test code
+        Solution solution = new Solution();
+        System.out.println("============= 1 번");
+        String testStrs = "5{he2{l}o}friend";
+        String result = "hellohellohellohellohellofriend";
+
+        if (solution.sol(testStrs).equals(result)) {
+            System.out.println("passsssss!!!! : ");
+        } else {
+            System.out.println("false!");
+        }
+
+        System.out.println("============= 2 번");
+        testStrs = "de2{afew}w3{rq5{f}}";
+        result = "deafewafewwrqfffffrqfffffrqfffff";
+        if (solution.sol(testStrs).equals(result)) {
+            System.out.println("passsssss!!!! : ");
+        } else {
+            System.out.println("false!");
+        }
+
+//        System.out.println("============= 3 번");
+//        testStrs = new String[]{"12", "123", "1235", "567", "88"};
+//        case1 = solution.sol(testStrs);
+//        if (case1 == true) {
+//            System.out.println("passsssss!!!! : " + case1);
+//        } else {
+//            System.out.println("false!" + case1);
+//        }
+        }
+    }
+
+```
