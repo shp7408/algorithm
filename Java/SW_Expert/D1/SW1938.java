@@ -1,9 +1,10 @@
+package D1;
+
 import java.util.Scanner;
 
-class Solution
+class SW1938
 {
-	public static void main(String args[]) throws Exception
-    {
+    public SW1938() {
         Scanner sc = new Scanner(System.in);
         int first, second;
         first = sc.nextInt();

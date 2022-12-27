@@ -1,7 +1,9 @@
+package D1;
+
 import java.util.Scanner;
 
-class Solution {
-    public static void main(String[] args) {
+class SW2025 {
+    public SW2025() {
         Scanner sc = new Scanner(System.in);
         int first, result;
         first = sc.nextInt();

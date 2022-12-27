@@ -9,7 +9,7 @@
  * 그 때, 그 때, 맞게 변경해서 사용하자.
  */
 class Solution {
-    public int sol(int n) {
+    public int sol(int[] numbers) {
         int answer = 0;
         return answer;
     }
@@ -24,11 +24,6 @@ public class Main {
 //        test code
         Solution solution = new Solution();
         System.out.println("============= 1 번");
-        int case1 = solution.sol(15);
-        if (case1 == 6) {
-            System.out.println("passsssss!!!! : " + case1);
-        } else {
-            System.out.println("false!" + case1);
-        }
+
     }
 }

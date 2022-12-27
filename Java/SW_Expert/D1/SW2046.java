@@ -1,7 +1,10 @@
+package D1;
+
 import java.util.Scanner;
 
-class Solution {
-    public static void main(String[] args) {
+class SW2046 {
+
+    public SW2046() {
         Scanner sc = new Scanner(System.in);
         int first;
         first = sc.nextInt();
